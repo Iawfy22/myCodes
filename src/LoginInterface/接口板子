@@ -1,0 +1,39 @@
+package com.yf.login0507;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+//事件处理类
+//继承接口：public class 子类 implements 接口，接口，，，{}
+//继承接口一定要重写接口中的抽象方法
+public class ButtonListener implements ActionListener {
+    //默认注册账号
+    private String name="123",pass="123";
+    //引用传递(初始化属性)
+    private JTextField userText;  //保存传递过来的账号框对象
+
+    //构造方法初始化
+    public ButtonListener(JTextField uText){
+        userText = uText;
+    }
+
+    //事件处理方法
+    public void actionPerformed(ActionEvent e){
+
+        //获取输入的账号，密码
+        String userName = userText.getText();
+
+        //验证账号，密码
+        if(name.equals(userName)){
+            System.out.println("yes");
+            //显示登录成功的界面
+        }else{
+            System.out.println("no");
+            //显示登录失败的界面
+        }
+
+
+        System.out.println("点击按钮！  userName = "+userName);
+    }
+}

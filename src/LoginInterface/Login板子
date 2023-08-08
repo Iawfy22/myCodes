@@ -1,0 +1,71 @@
+package com.yf.login0507;
+
+import javax.swing.*;
+import java.awt.*;
+
+/**
+ *  1.图形化编程(登录界面)：java.awt   javax.swing
+ *                  组件：账号/密码框，登录/注册按钮，窗体，图片
+ *
+ *  2.监听器：设置界面程序的交互功能
+ */
+public class Login {
+
+    //1.显示登录界面
+    public void showUI(){
+        //窗体
+        JFrame jf = new JFrame();
+        //像素
+        jf.setSize(450,550);
+        jf.setTitle("登录界面");
+        //居中显示
+        jf.setLocationRelativeTo(null);
+        //退出进程
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //流式布局管理器
+        FlowLayout flow = new FlowLayout();
+        jf.setLayout(flow);
+
+        //加载图片
+        ImageIcon image = new ImageIcon("D:\\chen\\图片\\1.jpg");
+        //标签
+        JLabel jla = new JLabel(image);
+        jf.add(jla);
+
+        //用户提示
+        JLabel user = new JLabel("账号:");
+        jf.add(user);
+
+        //账号框
+        JTextField jtf = new JTextField();
+        //除了JFrame,其它组件上设置大小都是该方法
+        Dimension dm = new Dimension(370,30);
+        jtf.setPreferredSize(dm);
+        jf.add(jtf);
+
+        //按钮
+        JButton btn = new JButton("登录");
+        jf.add(btn);
+
+        //设置可见,所有的组件放在可见之前添加
+        jf.setVisible(true);
+
+        //2.监听器
+        //a.事件源：当前动作所发生的组件(swing)
+        //b.监听器：动作监听器方法:addActionListener()
+        //c.绑定事件处理类
+
+        //数据类型：1.基本类型(8个)  2.引用类型(自定义类型)：类(class),接口(interface),数组
+
+        //给登录按钮添加动作监听器方法
+        //接口不能直接创建对象：重新定义类继承接口，重写接口中的抽象方法
+        ButtonListener listener = new ButtonListener(jtf);
+        btn.addActionListener(listener);
+    }
+
+    public static void main(String[] args) {
+        Login lo = new Login();
+        lo.showUI();
+    }
+}
